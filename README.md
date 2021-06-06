@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# SK Files
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Data extraction
 
-## Available Scripts
+Dataset of serial killers collected from [this Wikipedia article](https://en.wikipedia.org/wiki/List_of_serial_killers_by_number_of_victims) using the [MediaWiki API](https://www.mediawiki.org/wiki/MediaWiki):
 
-In the project directory, you can run:
+1. Fetch the data from the API with [`parse` action](https://www.mediawiki.org/wiki/API:Parsing_wikitext#parse)
+2. Parse the HTML tables containing all the data
+3. Output data for each serial killer with the following info:
 
-### `yarn start`
+- Name: civil name or pseudonym of the serial killer
+- Countries: countries where the crimes were committed
+- Years active: dates - beginning & end (if known) - covering the period the crimes were committed
+- Proven victims: number or range - minimum & maximum - of proven victims
+- Possible victims: number or range - minimum & maximum - of possible victims
+- Notes: quick description of the serial killer, the crimes & the judicial record
+- Status: status of the case - proven or dipsuted
+- Organisation: the type of organisation - solo or in group
+- Medical professional: if the perpetrator was a medical professional
+- Wikipedia article URL: link to the serial killer's Wikipedia article
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Example of JSON results
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```json
+{
+  "name": "Michael Swango",
+  "countries": ["United States", "Zimbabwe"],
+  "active_years": [1981, 1997],
+  "proven_victims": [4],
+  "possible_victims": [35, 60],
+  "notes": "Medical Doctor who killed patients.",
+  "status": "proven",
+  "organisation": "solo",
+  "medical_professional": true,
+  "wikipedia_article_url": "https://en.wikipedia.org/wiki/Michael_Swango"
+}
+```
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "name": "Juana Barraza",
+  "countries": ["Mexico"],
+  "active_years": [1990, 2006],
+  "proven_victims": [11],
+  "possible_victims": [29, 49],
+  "notes": "Female wrestler who bludgeoned or strangled elderly women to rob them. Sentenced to 759 years.",
+  "status": "proven",
+  "organisation": "solo",
+  "medical_professional": false,
+  "wikipedia_article_url": "https://en.wikipedia.org/wiki/Juana_Barraza"
+}
+```
