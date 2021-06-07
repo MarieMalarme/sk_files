@@ -7,12 +7,21 @@ const App = () => {
     get_data(set_data)
   }, [])
 
-  console.log(data)
+  const json_export = JSON.stringify(data, null, '\t')
 
   return (
     <div>
       <div>SK Files</div>
+      <div className="light">Dataset of serial killers</div>
       {!data && <div>Loading data...</div>}
+      {data && (
+        <a
+          href={`data: text/json;charset=utf-8, ${json_export}`}
+          download="sk_files.json"
+        >
+          <button className="bold">sk_files.json</button>
+        </a>
+      )}
     </div>
   )
 }

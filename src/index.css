@@ -24,7 +24,35 @@
   font-weight: 500;
   src: url('./fonts/trash-bold.otf');
 }
+
 body {
-  padding: 50px;
-  font-family: sans-serif;
+  padding: 80px;
+  font-family: 'trash';
+  font-weight: 500;
+  font-size: 70px;
+}
+
+button {
+  transition: color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+  background: none;
+  margin-top: 100px;
+  border: none;
+  border-bottom: solid 2px black;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  color: rgb(60, 60, 60);
+  border-bottom-color: rgb(60, 60, 60);
+}
+
+.light {
+  font-weight: 100;
+}
+
+.bold {
+  font-family: 'trash';
+  font-weight: 500;
+  font-size: 70px;
 }
