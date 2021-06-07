@@ -8,6 +8,22 @@
   display: none;
 }
 
+@font-face {
+  font-family: 'px-grotesk';
+  src: url('./fonts/px-grotesk.ttf');
+}
+
+@font-face {
+  font-family: 'trash';
+  font-weight: 100;
+  src: url('./fonts/trash-light.otf');
+}
+
+@font-face {
+  font-family: 'trash';
+  font-weight: 500;
+  src: url('./fonts/trash-bold.otf');
+}
 body {
   padding: 50px;
   font-family: sans-serif;
